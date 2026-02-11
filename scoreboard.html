@@ -1,46 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skor Sayfası</title>
+    <title>Skor Tablosu - Bayrak Tahmin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container" style="max-width: 800px;">
-  <h1>🏆 Skor Tablosu</h1>
+        <h1>🏆 Skor Tablosu</h1>
 
-  <h3>Son 10 Oyunum</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Tarih</th>
-        <th>Zorluk</th>
-        <th>Puan</th>
-      </tr>
-    </thead>
-    <tbody id="recent-scores">
-      </tbody>
-  </table>
+        <div style="margin-top: 2rem;">
+            <h3>Son 10 Oyunun</h3>
+            <table id="recent-table">
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Zorluk</th>
+                        <th>Puan</th>
+                    </tr>
+                </thead>
+                <tbody id="recent-scores">
+                    </tbody>
+            </table>
+        </div>
 
-  <h3 style="margin-top: 2rem;">🌟 En İyi 10 Skorum</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Sıra</th>
-        <th>Tarih</th>
-        <th>Zorluk</th>
-        <th>Puan</th>
-      </tr>
-    </thead>
-    <tbody id="best-scores">
-      </tbody>
-  </table>
+        <div style="margin-top: 2rem;">
+            <h3>🌟 En İyi Skorların</h3>
+            <table id="best-table">
+                <thead>
+                    <tr>
+                        <th>Sıra</th>
+                        <th>Tarih</th>
+                        <th>Zorluk</th>
+                        <th>Puan</th>
+                    </tr>
+                </thead>
+                <tbody id="best-scores">
+                    </tbody>
+            </table>
+        </div>
 
-  <div style="margin-top: 2rem; text-align:center;">
-    <button id="btn-home">Ana Sayfaya Dön</button>
-  </div>
-</div>
+        <div style="margin-top: 2rem;">
+            <button id="btn-home">Ana Sayfaya Dön</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

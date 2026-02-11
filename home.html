@@ -9,17 +9,22 @@
 <body>
 
 <div class="container">
-  <h1>Hoş geldin, <span id="username"></span>!</h1>
+  <h1>Hoş geldin, <span id="display-username"></span>!</h1>
 
-  <label for="difficulty">Zorluk Seviyesi Seç:</label>
-  <select id="difficulty">
-    <option value="easy">Kolay (Büyük nüfuslu ülkeler)</option>
-    <option value="medium" selected>Orta (Karma)</option>
-    <option value="hard">Zor (Küçük nüfuslu ülkeler)</option>
-  </select>
+  <div style="margin: 2rem 0;">
+    <label for="difficulty" style="display: block; margin-bottom: 10px;">Zorluk Seviyesi Seç:</label>
+    <select id="difficulty">
+      <option value="easy">Kolay (Büyük Nüfuslu Ülkeler)</option>
+      <option value="medium" selected>Orta (Karma)</option>
+      <option value="hard">Zor (Küçük Nüfuslu Ülkeler)</option>
+    </select>
+  </div>
 
   <button id="btn-start">Oyuna Başla</button>
-  <button id="btn-scoreboard">Skor Tablosu</button>
-  <button id="btn-logout" style="background:#e63946; margin-top:2rem;">Çıkış Yap</button>
-  <script src="script.js">  </script>
+  <button id="btn-scoreboard" style="background: var(--success);">Skor Tablosu</button>
+  <button id="btn-logout" style="background: var(--danger); margin-top: 2rem;">Çıkış Yap</button>
 </div>
+
+<script src="script.js"></script>
+</body>
+</html>

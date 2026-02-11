@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bayrak Tahmin Oyunu - Giriş</title>
+  <title>Giriş - Bayrak Tahmin</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-
-    <input type="text" id="username" placeholder="kullanıcı adı" autofocus outocomplete="username">
-    <input type="password" id="pasword" placeholder="sifre">
-
+    <h1>Bayrak Tahmin</h1>
+    <input type="text" id="username" placeholder="Kullanıcı Adı" autocomplete="username">
+    <input type="password" id="password" placeholder="Şifre">
     <div class="flex-center">
-      <button id = "btn-login">Giriş yap</button>
-      <button id = "btn-register">Kayıt ol</button> 
+      <button id="btn-login">Giriş Yap</button>
+      <button id="btn-register" style="background: var(--success);">Kayıt Ol</button> 
     </div>
-
     <p id="message" class="message"></p>
   </div>
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

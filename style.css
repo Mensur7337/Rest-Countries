@@ -1,7 +1,7 @@
 :root {
-  --primary: #4361ee;   /* Ana mavi rengimiz */
-  --success: #4cc9f0;   /* Doğru cevap rengi */
-  --danger: #f72585;    /* Yanlış cevap rengi */
+  --primary: #4361ee;
+  --success: #4cc9f0;
+  --danger: #f72585;
   --dark: #3f37c9;
   --light: #f8f9fa;
 }
@@ -9,12 +9,11 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Kenar boşluklarının boyutu bozmamasını sağlar */
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  /* Arkaya şık bir mor-mavi geçiş ekliyoruz */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   min-height: 100vh;
@@ -27,8 +26,8 @@ body {
 .container {
   max-width: 500px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.15); /* Yarı saydam beyaz */
-  backdrop-filter: blur(15px);           /* Arkadaki rengi bulandırır */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
@@ -36,29 +35,65 @@ body {
   text-align: center;
 }
 
-input {
+input, select {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
   border-radius: 8px;
   border: none;
   background: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+  color: #333;
 }
 
 button {
   width: 100%;
   padding: 12px;
-  margin-top: 15px;
+  margin-top: 10px;
   border-radius: 8px;
   border: none;
   background: var(--primary);
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  transition: 0.2s;
 }
 
+button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.flex-center {
+  display: flex;
+  gap: 10px;
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #ffb7b7;
+}
+.answer-card p {
+    margin: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.answer-card strong {
+    color: var(--success);
+}
+
+/* Oyun içi tablolar için */
+table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
 button:hover {
   background: var(--dark);
   transform: translateY(-2px); /* Üstüne gelince hafifçe yukarı zıplar */

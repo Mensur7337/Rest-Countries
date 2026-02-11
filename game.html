@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BayrakTahmin Oyunu - Kullanıcı Oynuyor</title>
+    <title>Bayrak Tahmin Oyunu - Yarışma</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="contanier">
-        <div class="game-layout">
-                <div class="container left-panel">
-                    <h2>Soru <span id="question-number">1</span>/10</h2>
-                    <div class="progress"><div class="progress-bar" id="progress"></div></div>
-                    <img id="flag" class="flag" alt="Bayrak">
-                    
-                    <input type="text" id="country" placeholder="Ülke adı">
-                    <input type="text" id="capital" placeholder="Başkent">
-                    <input type="number" id="population" placeholder="Nüfus">
+    <div class="game-layout">
+        <div class="container left-panel">
+            <h2>Soru <span id="question-number">1</span>/10</h2>
+            <div class="progress" style="background: rgba(255,255,255,0.2); border-radius: 10px; margin: 10px 0;">
+                <div id="progress-bar" style="width: 10%; height: 10px; background: var(--success); border-radius: 10px; transition: 0.3s;"></div>
+            </div>
+            
+            <img id="flag" class="flag" alt="Bayrak" style="width: 100%; max-height: 200px; object-fit: contain; margin: 15px 0; border-radius: 8px;">
+            
+            <input type="text" id="input-country" placeholder="Ülke adı">
+            <input type="text" id="input-capital" placeholder="Başkent">
+            <input type="number" id="input-population" placeholder="Tahmini Nüfus">
 
-                    <button id="submit">Cevapla</button>
-                    <button id="next" style="display:none;">Sonraki Soru →</button>
-                    <div id="result"></div>
-                </div>
+            <button id="btn-submit">Cevapla</button>
+            <button id="btn-next" style="display:none; background: var(--dark);">Sonraki Soru →</button>
+            <div id="result-message" style="margin-top: 15px; font-weight: bold;"></div>
+        </div>
 
-                <div class="container right-panel">
-                    <h3>Kalan Süre</h3>
-                    <div class="timer-circle" id="timer-display">30</div>
-                </div>
-                </div>>
+        <div class="container right-panel">
+            <h3>Kalan Süre</h3>
+            <div class="timer-circle" id="timer-display">30</div>
+            <div id="total-score-display" style="margin-top: 20px; font-size: 1.2rem;">Puan: 0</div>
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
