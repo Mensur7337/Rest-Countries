@@ -1,0 +1,100 @@
+:root {
+  --primary: #4361ee;   /* Ana mavi rengimiz */
+  --success: #4cc9f0;   /* Doğru cevap rengi */
+  --danger: #f72585;    /* Yanlış cevap rengi */
+  --dark: #3f37c9;
+  --light: #f8f9fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Kenar boşluklarının boyutu bozmamasını sağlar */
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  /* Arkaya şık bir mor-mavi geçiş ekliyoruz */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15); /* Yarı saydam beyaz */
+  backdrop-filter: blur(15px);           /* Arkadaki rengi bulandırır */
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+  background: var(--dark);
+  transform: translateY(-2px); /* Üstüne gelince hafifçe yukarı zıplar */
+}
+
+/* Ekranı ikiye bölen ana yapı */
+.game-layout {
+  display: flex;
+  gap: 20px;
+  max-width: 1000px; /* Ekran genişlediği için bunu artırdık */
+  margin: 0 auto;
+}
+
+.left-panel {
+  flex: 7; /* %70 alan kaplar */
+}
+
+.right-panel {
+  flex: 3; /* %30 alan kaplar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Yuvarlak Zamanlayıcı Tasarımı */
+.timer-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 10px solid rgba(255,255,255,0.2);
+  border-top: 10px solid var(--danger); /* Zamanın geçtiğini gösteren renk */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  transition: all 0.3s;
+}

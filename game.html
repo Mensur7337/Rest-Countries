@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BayrakTahmin Oyunu - Kullanıcı Oynuyor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contanier">
+        <div class="game-layout">
+                <div class="container left-panel">
+                    <h2>Soru <span id="question-number">1</span>/10</h2>
+                    <div class="progress"><div class="progress-bar" id="progress"></div></div>
+                    <img id="flag" class="flag" alt="Bayrak">
+                    
+                    <input type="text" id="country" placeholder="Ülke adı">
+                    <input type="text" id="capital" placeholder="Başkent">
+                    <input type="number" id="population" placeholder="Nüfus">
+
+                    <button id="submit">Cevapla</button>
+                    <button id="next" style="display:none;">Sonraki Soru →</button>
+                    <div id="result"></div>
+                </div>
+
+                <div class="container right-panel">
+                    <h3>Kalan Süre</h3>
+                    <div class="timer-circle" id="timer-display">30</div>
+                </div>
+                </div>>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

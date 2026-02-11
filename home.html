@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ana Sayfa - Bayrak Tahmin Oyunu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Hoş geldin, <span id="username"></span>!</h1>
+
+  <label for="difficulty">Zorluk Seviyesi Seç:</label>
+  <select id="difficulty">
+    <option value="easy">Kolay (Büyük nüfuslu ülkeler)</option>
+    <option value="medium" selected>Orta (Karma)</option>
+    <option value="hard">Zor (Küçük nüfuslu ülkeler)</option>
+  </select>
+
+  <button id="btn-start">Oyuna Başla</button>
+  <button id="btn-scoreboard">Skor Tablosu</button>
+  <button id="btn-logout" style="background:#e63946; margin-top:2rem;">Çıkış Yap</button>
+  <script src="script.js">  </script>
+</div>
