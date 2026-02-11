@@ -1,15 +1,12 @@
-// --- KONFİGÜRASYON ---
 const STORAGE_KEY_USERS = "flagGame_users";
 const STORAGE_KEY_SCORES = "flagGame_scores";
 const STORAGE_KEY_ACTIVE = "flagGame_activeUser";
 
-// Yardımcılar
 const getUsers = () => JSON.parse(localStorage.getItem(STORAGE_KEY_USERS) || "{}");
 const saveUsers = (users) => localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
 const getActiveUser = () => localStorage.getItem(STORAGE_KEY_ACTIVE);
 const setActiveUser = (user) => localStorage.setItem(STORAGE_KEY_ACTIVE, user);
 
-// Şifre Hashleme
 function sha256Simple(str) {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
@@ -19,14 +16,12 @@ function sha256Simple(str) {
     return hash.toString(36);
 }
 
-// Normalizasyon
 function normalize(str) {
     return (str || "").trim().toLowerCase()
         .replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ü/g, 'u')
         .replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ç/g, 'c');
 }
 
-// --- SAYFA KONTROLÜ ---
 document.addEventListener("DOMContentLoaded", () => {
     const page = window.location.pathname.split("/").pop();
     const user = getActiveUser();
@@ -42,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (page === "scoreboard.html") initScoreboard();
 });
 
-// --- GİRİŞ MANTIĞI ---
 function initLogin() {
     const userInp = document.getElementById("username");
     const passInp = document.getElementById("password");
@@ -67,7 +61,6 @@ function initLogin() {
     };
 }
 
-// --- ANA SAYFA MANTIĞI ---
 function initHome(currentUser) {
     document.getElementById("display-username").textContent = currentUser;
     document.getElementById("btn-start").onclick = () => {
@@ -81,7 +74,6 @@ function initHome(currentUser) {
     };
 }
 
-// --- OYUN MOTORU ---
 let gameData = { questions: [], currentIndex: 0, score: 0, timer: null, timeLeft: 30 };
 
 async function initGame() {
@@ -122,7 +114,6 @@ function showQuestion() {
     document.getElementById("flag").src = q.flag;
     document.getElementById("result-message").innerHTML = "";
     
-    // Inputları temizle
     ["input-country", "input-capital", "input-population"].forEach(id => {
         const el = document.getElementById(id);
         el.value = "";
@@ -166,7 +157,6 @@ function checkAnswers(isTimeout = false) {
     gameData.score += p;
     document.getElementById("total-score-display").textContent = `Puan: ${gameData.score}`;
 
-    // Cevap Paneli (İstediğin Temiz Görünüm)
     const resultMsg = document.getElementById("result-message");
     resultMsg.innerHTML = `
         <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin-top: 10px; text-align: left;">
@@ -196,7 +186,6 @@ function finishGame() {
     window.location.href = "scoreboard.html";
 }
 
-// --- SKOR TABLOSU ---
 function initScoreboard() {
     const user = getActiveUser();
     const scores = (JSON.parse(localStorage.getItem(STORAGE_KEY_SCORES) || "{}"))[user] || [];
@@ -229,13 +218,11 @@ function setupGameEvents() {
 function showQuestion() {
     const q = gameData.questions[gameData.currentIndex];
     
-    // UI Güncelle
     document.getElementById("question-number").textContent = gameData.currentIndex + 1;
     document.getElementById("progress-bar").style.width = `${(gameData.currentIndex + 1) * 10}%`;
     document.getElementById("flag").src = q.flag;
     document.getElementById("result-message").textContent = "";
     
-    // Inputları temizle
     document.getElementById("input-country").value = "";
     document.getElementById("input-capital").value = "";
     document.getElementById("input-population").value = "";
@@ -260,7 +247,7 @@ function startTimer() {
         if (gameData.timeLeft <= 10) display.style.color = "var(--danger)";
         if (gameData.timeLeft <= 0) {
             clearInterval(gameData.timer);
-            checkAnswers(true); // Süre biterse zorla kontrol et
+            checkAnswers(true);
         }
     }, 1000);
 }
@@ -278,7 +265,7 @@ function checkAnswers(isTimeout = false) {
         if (userCapital === normalize(q.capital)) points += 30;
         
         const popDiff = Math.abs(userPop - q.population);
-        if (popDiff <= q.population * 0.1) points += 30; // %10 sapma payı
+        if (popDiff <= q.population * 0.1) points += 30; 
     }
 
     gameData.score += points;
@@ -294,7 +281,7 @@ function check(isTimeout = false) {
     clearInterval(state.timer);
     const q = state.questions[state.idx];
     
-    // Değerleri al ve karşılaştır
+
     const userCountry = document.getElementById("in-name").value;
     const userCapital = document.getElementById("in-capital").value;
     const userPop = parseInt(document.getElementById("in-pop").value) || 0;
@@ -313,7 +300,7 @@ function check(isTimeout = false) {
     
     document.getElementById("current-score").textContent = `Puan: ${state.score}`;
 
-    // Geri bildirim alanını temiz bir tablo/liste formuna çevirelim
+    
     const feedbackEl = document.getElementById("feedback");
     feedbackEl.innerHTML = `
         <div class="answer-card" style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin-top: 10px; text-align: left;">
@@ -336,7 +323,6 @@ function finishGame() {
     const user = getActiveUser();
     const difficulty = localStorage.getItem("flagGame_difficulty") || "medium";
     
-    // Skorları Al ve Yeni Skoru Ekle
     const allScores = JSON.parse(localStorage.getItem(STORAGE_KEY_SCORES) || "{}");
     if (!allScores[user]) allScores[user] = [];
     
@@ -351,25 +337,25 @@ function finishGame() {
     window.location.href = "scoreboard.html";
 }
 
-// --- SKOR TABLOSU MANTIĞI ---
+
 function initScoreboard() {
     const user = getActiveUser();
     const allScores = JSON.parse(localStorage.getItem(STORAGE_KEY_SCORES) || "{}");
     const userScores = allScores[user] || [];
 
-    // 1. Son 10 Oyun (Tarihe göre yeniden eskiye)
+  
     const recentBody = document.getElementById("recent-scores");
     const recentTen = [...userScores].reverse().slice(0, 10);
     
     renderTable(recentBody, recentTen, false);
 
-    // 2. En İyi 10 Skor (Puana göre yüksekten düşüğe)
+   
     const bestBody = document.getElementById("best-scores");
     const bestTen = [...userScores].sort((a, b) => b.score - a.score).slice(0, 10);
     
     renderTable(bestBody, bestTen, true);
 
-    // Ana Sayfa Butonu
+    
     document.getElementById("btn-home").onclick = () => {
         window.location.href = "home.html";
     };

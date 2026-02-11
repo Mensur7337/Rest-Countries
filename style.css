@@ -84,7 +84,6 @@ button:hover {
     color: var(--success);
 }
 
-/* Oyun içi tablolar için */
 table {
   width: 100%;
   margin-top: 1rem;
@@ -96,36 +95,34 @@ th, td {
 }
 button:hover {
   background: var(--dark);
-  transform: translateY(-2px); /* Üstüne gelince hafifçe yukarı zıplar */
+  transform: translateY(-2px);
 }
 
-/* Ekranı ikiye bölen ana yapı */
 .game-layout {
   display: flex;
-  gap: 20px;
-  max-width: 1000px; /* Ekran genişlediği için bunu artırdık */
+  gap: 30px;
+  max-width: 1000px; 
   margin: 0 auto;
 }
 
 .left-panel {
-  flex: 7; /* %70 alan kaplar */
+  flex: 7; 
 }
 
 .right-panel {
-  flex: 3; /* %30 alan kaplar */
+  flex: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* Yuvarlak Zamanlayıcı Tasarımı */
 .timer-circle {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 10px solid rgba(255,255,255,0.2);
-  border-top: 10px solid var(--danger); /* Zamanın geçtiğini gösteren renk */
+  border-top: 10px solid var(--danger); 
   display: flex;
   align-items: center;
   justify-content: center;
